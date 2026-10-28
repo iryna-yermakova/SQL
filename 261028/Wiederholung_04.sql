@@ -31,9 +31,7 @@ DROP COLUMN ort;
 SELECT * FROM Abteilung
 SELECT * FROM MuenchAbt;
 
-INSERT INTO  MuenchAbt(id, bezeichnungen)
-	SELECT (id, bezeichnung)
-	FROM Abt
+
 
 -- Aufgabe 11.2
 --
