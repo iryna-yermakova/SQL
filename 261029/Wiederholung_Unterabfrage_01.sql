@@ -119,7 +119,7 @@ WHERE abt_id IN (
 
 SELECT mit_id
 FROM Arbeit
-WHERE aufgabe = 'Projektleiter' and einst_dat = (
+WHERE aufgabe = 'Projektleiter' AND einst_dat = (
 		SELECT MAX(einst_dat)
 		FROM Arbeit
 		WHERE aufgabe = 'Projektleiter'
@@ -287,7 +287,7 @@ SELECT
 		WHERE m.id = g.mit_id),
 		Gehalt,
 		(SELECT AVG(gehalt) FROM Gehalt) as durchschnitt,
-		(gehalt - (SELECT AVG(gehalt) FROM Gehalt)) as differenz
+		gehalt - (SELECT AVG(gehalt) FROM Gehalt) as differenz
 
 FROM Gehalt g;
 
@@ -307,7 +307,7 @@ FROM Gehalt g;
 SELECT 
 		m.nachname,
 		(SELECT ab.bezeichnung FROM Abteilung ab
-		WHERE ab.id = m.abt_id)
+		WHERE ab.id = m.abt_id) as abteilung
 FROM Mitarbeiter m
 WHERE m.id IN (
 		SELECT a.mit_id FROM Arbeit a
