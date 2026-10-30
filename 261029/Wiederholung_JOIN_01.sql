@@ -34,10 +34,7 @@ WHERE m.abt_id = 4;
 --      p4  Pluto        88500,00   4      5765    2018-07-20
 --      p5  Ariane       165000,00  2      22222   2019-01-01
 SELECT
-		p.id,
-		p.bezeichnung,
-		p.mittel,
-		p.kunde_id as kd_id,
+		p.*,
 		a.mit_id,
 		a.einst_dat
 FROM Projekt p
@@ -59,10 +56,7 @@ ORDER BY p.id;
 --      p5  Ariane       165000,00  2      Vogel     2019-01-01
 
 SELECT
-		p.id,
-		p.bezeichnung,
-		p.mittel,
-		p.kunde_id as kd_id,
+		p.*,
 		m.nachname,
 		a.einst_dat
 FROM Projekt p
@@ -83,10 +77,7 @@ ORDER BY p.id;
 --      p5  Ariane       165000,00  2      Vogel     2019-01-01  Einkauf
 
 SELECT
-		p.id,
-		p.bezeichnung,
-		p.mittel,
-		p.kunde_id as kd_id,
+		p.*,
 		m.nachname,
 		a.einst_dat,
 		ab.bezeichnung
@@ -114,11 +105,7 @@ ORDER BY p.id;
 --      ...
 --      (20 Zeilen)
 SELECT
-		m.id,
-		m.nachname,
-		m.vorname,
-		m.abt_id,
-		m.ort AS stadt,
+		m.*,
 		ab.bezeichnung,
 		ab.ort AS stadt,
 		g.gehalt,
