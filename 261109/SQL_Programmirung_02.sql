@@ -63,3 +63,28 @@ BEGIN
 END;
 
 EXEC dbo.sp_FilterMitarbeiter1 'Einkauff';
+
+--Redur Lösung
+GO
+CREATE OR ALTER PROCEDURE sp_FilterMitarbeiter1
+    @abt_bez VARCHAR(50)
+AS
+BEGIN
+    IF @abt_bez IN (SELECT bezeichnung FROM Abteilung
+                    WHERE @abt_bez = bezeichnung)
+                    
+            SELECT m.id, m.vorname, m.nachname, m.abt_id, ab.bezeichnung 
+            FROM Mitarbeiter m
+                JOIN Abteilung ab ON ab.id= m.abt_id
+            WHERE @abt_bez = bezeichnung;
+
+    ELSE
+        PRINT 'Abteilung ungültig '
+END;
+GO
+
+EXEC sp_FilterMitarbeiter1
+    @abt_bez = 'Produktion';
+
+DROP PROCEDURE IF EXISTS sp_FilterMitarbeiter1;
+DROP PROCEDURE IF EXISTS dbo.Einkauf;
